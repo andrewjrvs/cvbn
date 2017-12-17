@@ -12,7 +12,7 @@
               what you love, but I’ve been privileged to have that opportunity. Listed below are a few of the projects I’ve worked on over the years.
           </p>
       </section>
-      <div class="project-overview-list">
+      <div class="project-overview-list" *ngIf="projects$ | async as projects">
           <app-blurb *ngFor="let project of projects" [project]="project"></app-blurb>
       </div>
   </main>

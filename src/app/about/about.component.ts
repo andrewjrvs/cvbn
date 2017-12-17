@@ -2,6 +2,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { PersonalInformationService } from '../personal-information.service';
 import { Skill } from '../skill';
 import { slideInDownAnimation } from '../animations';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 @Component({
   selector: 'app-about',
@@ -13,16 +15,13 @@ import { slideInDownAnimation } from '../animations';
 export class AboutComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
-  mySkills: Skill[];
 
-  constructor(private personalInformationService: PersonalInformationService) { }
+  public skills$: Observable<Skill[]>;
 
-  getMySkills(): void {
-    this.personalInformationService.getSkills().then(skills => this.mySkills = skills);
+  constructor(private _pInfoSrv: PersonalInformationService) {
+    this.skills$ = this._pInfoSrv.skills$.share();
   }
 
-  ngOnInit(): void {
-    this.getMySkills();
-  }
+  ngOnInit(): void { }
 
 }

@@ -4,18 +4,18 @@ import { WINDOWREF, WindowRef } from './WindowRef';
 
 import { ScrollupService } from './scrollup.service';
 
-class mockWindowRef {
+class MockWindowRef {
 
 }
 
 describe('ScrollupService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ScrollupService,  { provide: WINDOWREF, useClass: mockWindowRef }]
+      providers: [ScrollupService,  { provide: WINDOWREF, useClass: MockWindowRef }]
     }).overrideComponent(ScrollupService, {
       set: {
         providers: [
-          { provide: WINDOWREF, useClass: mockWindowRef }
+          { provide: WINDOWREF, useClass: MockWindowRef }
         ]
       }
     });

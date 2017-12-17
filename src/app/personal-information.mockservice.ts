@@ -1,4 +1,5 @@
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 import {Skill} from './skill';
 import {Project} from './project';
@@ -16,11 +17,9 @@ const mockSkills: Skill[] = [{
 } as Skill];
 
 export class MockPersonalInformationService {
-    getSkills(): Promise<Skill[]> {
-      return Promise.resolve(mockSkills);
-  }
-
-  getProjects(): Promise<Project[]> {
-      return Promise.resolve(PROJECTS);
-  }
+    public get skills$(): Observable<Skill[]> {
+        return Observable.of(mockSkills);
+    }
+    // public skills$ = Observable.from(mockSkills);
+    public projects$ = Observable.of(PROJECTS);
 }

@@ -45,18 +45,18 @@ function paralax_shell(x: number, y: number, maxX: number, maxY: number): String
     degY = (((y * (maxYdeviation) / maxY) - maxYdeviation));
     degX = (((x * (maxXdeviation) / maxX) - maxXdeviation));
 
-    if (degY > maxYdeviation) { degY = maxYdeviation; };
-    if (degX > maxXdeviation) { degX = maxXdeviation; };
+    if (degY > maxYdeviation) { degY = maxYdeviation; }
+    if (degX > maxXdeviation) { degX = maxXdeviation; }
 
-    if (degY < 0) { degY = degY * -1; };
-    if (degX < 0) { degX = degX * -1; };
+    if (degY < 0) { degY = degY * -1; }
+    if (degX < 0) { degX = degX * -1; }
     deg = (degY > degX ? degY : degX) + 'deg';
 
     tiltY = degY;
     tiltX = degX;
 
-    if (maxX - x > 0) { tiltX = tiltX * -1; };
-    if (maxY - y > 0) { tiltY = tiltY * -1; };
+    if (maxX - x > 0) { tiltX = tiltX * -1; }
+    if (maxY - y > 0) { tiltY = tiltY * -1; }
 
     return 'rotate3d(' + tiltY + ',' + (tiltX * -1) + ',0,' + deg + ')';
 }

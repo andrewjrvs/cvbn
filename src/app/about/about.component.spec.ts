@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FrameworkModule } from '../framework/framework.module';
 import { SkillBarComponent } from '../skill-bar/skill-bar.component';
 import { PersonalInformationService } from '../personal-information.service';
@@ -11,12 +12,12 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FrameworkModule]
+      imports: [FrameworkModule, NoopAnimationsModule]
       , declarations: [ AboutComponent, SkillBarComponent ]
     }).overrideComponent(
       AboutComponent, {
         set: {
-          providers: [ 
+          providers: [
             { provide: PersonalInformationService, useClass: MockPersonalInformationService }
           ]
         }

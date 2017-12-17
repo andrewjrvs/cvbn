@@ -10,7 +10,7 @@ import { slideInDownAnimation } from '../animations';
 export class HomeComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
-  
+
   constructor() { }
 
   ngOnInit() {

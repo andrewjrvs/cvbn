@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { FrameworkModule } from './framework/framework.module';
@@ -26,7 +26,7 @@ import { BlurbComponent } from './blurb/blurb.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     FrameworkModule,
     RouterModule.forRoot([
       {

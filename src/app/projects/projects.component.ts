@@ -2,6 +2,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { PersonalInformationService } from '../personal-information.service';
 import { Project } from '../project';
 import { slideInDownAnimation } from '../animations';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 @Component({
   selector: 'app-projects',
@@ -13,16 +15,13 @@ import { slideInDownAnimation } from '../animations';
 export class ProjectsComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
-  public projects: Project[];
 
-  constructor(private personalInformationService: PersonalInformationService) {}
+  public projects$: Observable<Project[]>;
 
-  getMyProjects(): void {
-      this.personalInformationService.getProjects().then(data => this.projects = data);
+  constructor(private _pInfoSrv: PersonalInformationService) {
+    this.projects$ = this._pInfoSrv.projects$.share();
   }
 
-  ngOnInit(): void {
-      this.getMyProjects();
-  }
+  ngOnInit(): void { }
 
 }

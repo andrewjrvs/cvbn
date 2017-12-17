@@ -1,31 +1,81 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
+
 import 'rxjs/add/operator/toPromise';
 
-import {Skill} from './skill';
-import {Project} from './project';
-import {PROJECTS} from './mock-projects';
+import { Skill } from './skill';
+import { Project } from './project';
+import { PROJECTS } from './mock-projects';
+
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class PersonalInformationService {
-  private skillsURL = 'assets/myskills.json';
 
-  constructor(private http: Http) { }
+    private skillsURL = environment.urls.skills;
 
-  getSkills(): Promise<Skill[]> {
-      return this.http.get(this.skillsURL)
-          .toPromise()
-          .then(response => response.json() as Skill[])
-          .catch(this.handleError);
-  }
+    private skillsSubject: Subject<Skill[]> = new ReplaySubject<Skill[]>();
+    private loadingSkills = new BehaviorSubject<boolean>(false);
+    private skillsFirstLoad = false;
 
-  getProjects(): Promise<Project[]> {
-      return Promise.resolve(PROJECTS);
-  }
+    private projectSubject: Subject<Project[]> = new ReplaySubject<Project[]>();
+    private loadingProjects = new BehaviorSubject<boolean>(false);
+    private projectsFirstLoad = false;
 
-  private handleError(error: any): Promise<any> {
-      console.error('An error occurred', error);
-      return Promise.reject(error.message || error);
-  }
+    /**
+     * Observable list of skills had
+     */
+    public get skills$(): Observable<Skill[]> {
+        if (!this.skillsFirstLoad) {
+            this.skillsFirstLoad = true;
+            this.loadSkillsFromSource();
+        }
+        return this.skillsSubject.asObservable();
+    }
 
+    /**
+     * Observable list of projects worked on
+     */
+    public get projects$(): Observable<Project[]> {
+        if (!this.projectsFirstLoad) {
+            this.projectsFirstLoad = true;
+            this.loadProjectsFromSource();
+        }
+        return this.projectSubject.asObservable();
+    }
+
+    constructor(private _http: HttpClient) { }
+
+    /**
+     * This will load the projects from their source
+     * - currently this is from a mock file
+     */
+    private loadProjectsFromSource(): void {
+        this.loadingProjects.next(true);
+        this.projectSubject.next(PROJECTS);
+        this.loadingProjects.next(false);
+    }
+
+    /**
+     * This will load the list of skills from their source
+     * by pulling them from the skills file.
+     */
+    private loadSkillsFromSource(): void {
+        this.loadingSkills.next(true);
+        this._http.get(this.skillsURL).subscribe(
+            (data) => {
+                this.skillsSubject.next(data as Skill[]);
+            },
+            (err) => {
+                this.skillsSubject.error(err);
+            },
+            () => {
+                this.loadingSkills.next(false);
+            }
+        );
+    }
 }

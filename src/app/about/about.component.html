@@ -46,9 +46,9 @@
             </ul>
         </section>
 
-        <section class="skills">
+        <section class="skills" *ngIf="skills$ | async as skills">
             <h2 class="about-section-title">Skill Set <sup>*</sup></h2>
-            <app-skill-bar *ngFor="let skill of mySkills;let i = index"
+            <app-skill-bar *ngFor="let skill of skills; let i = index"
                         [class.progress-bar-blip1]="i % 3 == 1"
                         [class.progress-bar-blip3]="i % 3 == 2"
                         [value]="skill.ability">
