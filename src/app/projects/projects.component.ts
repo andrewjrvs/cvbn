@@ -2,8 +2,9 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { PersonalInformationService } from '../personal-information.service';
 import { Project } from '../project';
 import { slideInDownAnimation } from '../animations';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/share';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-projects',
@@ -19,7 +20,7 @@ export class ProjectsComponent implements OnInit {
   public projects$: Observable<Project[]>;
 
   constructor(private _pInfoSrv: PersonalInformationService) {
-    this.projects$ = this._pInfoSrv.projects$.share();
+    this.projects$ = this._pInfoSrv.projects$.pipe(share());
   }
 
   ngOnInit(): void { }

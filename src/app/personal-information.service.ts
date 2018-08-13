@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import { BehaviorSubject, ReplaySubject, Subject, Observable } from 'rxjs';
 
-import 'rxjs/add/operator/toPromise';
 
 import { Skill } from './skill';
 import { Project } from './project';

@@ -1,4 +1,5 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
+
 import 'rxjs/add/observable/of';
 
 import {Skill} from './skill';
@@ -18,8 +19,8 @@ const mockSkills: Skill[] = [{
 
 export class MockPersonalInformationService {
     public get skills$(): Observable<Skill[]> {
-        return Observable.of(mockSkills);
+        return of(mockSkills);
     }
     // public skills$ = Observable.from(mockSkills);
-    public projects$ = Observable.of(PROJECTS);
+    public projects$ = of(PROJECTS);
 }

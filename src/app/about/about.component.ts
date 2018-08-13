@@ -2,8 +2,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { PersonalInformationService } from '../personal-information.service';
 import { Skill } from '../skill';
 import { slideInDownAnimation } from '../animations';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/share';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
@@ -19,7 +19,7 @@ export class AboutComponent implements OnInit {
   public skills$: Observable<Skill[]>;
 
   constructor(private _pInfoSrv: PersonalInformationService) {
-    this.skills$ = this._pInfoSrv.skills$.share();
+    this.skills$ = this._pInfoSrv.skills$.pipe(share());
   }
 
   ngOnInit(): void { }
