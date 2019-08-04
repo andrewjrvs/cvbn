@@ -16,7 +16,7 @@ export class MainComponent implements OnInit, OnDestroy {
   @ViewChild('postDiv', {static: false})
   private postDiv: MarkdownComponent;
 
-  constructor(private markdownService: MarkdownService, private renderer: Renderer2, private router: Router,) { }
+  constructor(private markdownService: MarkdownService, private renderer: Renderer2, private router: Router) { }
 
   public onMarkdownLoad() {
     // because MarkdownComponent isn't 'compiled' the links don't use the angular router,
