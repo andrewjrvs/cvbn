@@ -1,25 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { MarkdownService } from 'ngx-markdown';
+import { Component, OnInit, ViewChild, Renderer2, OnDestroy } from '@angular/core';
+import { MarkdownService, MarkdownComponent } from 'ngx-markdown';
+import { Router } from '@angular/router';
+
+const isAbsolute = new RegExp('(?:^[a-z][a-z0-9+.-]*:|\/\/)', 'i');
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
 
-  constructor(private markdownService: MarkdownService) { }
+  private listenObj: any;
 
-  public test() {
-    console.log('testing clicked');
+  @ViewChild('postDiv', {static: false})
+  private postDiv: MarkdownComponent;
+
+  constructor(private markdownService: MarkdownService, private renderer: Renderer2, private router: Router,) { }
+
+  public onMarkdownLoad() {
+    // because MarkdownComponent isn't 'compiled' the links don't use the angular router,
+    // so I'll catch the link click events here and pass them to the router...
+    if (this.postDiv) {
+      this.listenObj = this.renderer.listen(this.postDiv.element.nativeElement, 'click', (e: Event) => {
+        if (e.target && (e.target as any).tagName === 'A') {
+          const el = (e.target as HTMLElement);
+          const linkURL = el.getAttribute && el.getAttribute('href');
+          if (linkURL && !isAbsolute.test(linkURL)) {
+            e.preventDefault();
+            this.router.navigate([linkURL]);
+          }
+        }
+      });
+    }
   }
 
-  ngOnInit() {
-    // TODO: I need to get this to use use the Angular Router...
-    // this.markdownService.renderer.link = (href: string, title: string, text: string) => {
-    //   return `
-    //     <a routerLink="${href}" (click)="test()" href="${href}" routerLinkActive="active" title="${title}">${text}</a>`;
-    // };
+  ngOnInit() {  }
+
+  ngOnDestroy(): void {
+    if (this.listenObj) {
+      this.listenObj();
+    }
   }
 
 }
