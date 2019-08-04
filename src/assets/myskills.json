@@ -1,8 +1,8 @@
 [{ "label": "Programming", "sub": "C#, VB.NET, PHP", "ability": 94 },
     { "label": "Database", "sub": "MS SQL, MySQL", "ability": 82 },
-    { "label": "JavaScript", "sub": "vanilla, jQuery", "ability": 95 },
-    { "label": "HTML", "sub": "HTML5, CSS3", "ability": 85 },
+    { "label": "JavaScript", "sub": "Client, Server", "ability": 96 },
+    { "label": "HTML", "sub": "HTML5, CSS3", "ability": 89 },
     { "label": "WordPress", "sub": null, "ability": 75 },
-    { "label": "Angular2", "sub": "ES5,TS", "ability": 72 },
+    { "label": "Angular", "ability": 82 },
     { "label": "Coldfusion", "sub": null, "ability": 65 },
-    { "label": "JAVA", "sub": null, "ability": 33 }]
+    { "label": "JAVA", "sub": null, "ability": 53 }]
