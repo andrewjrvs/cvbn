@@ -1,7 +1,7 @@
 <app-base-page>
     <main class="content popup-body">
         <section class="container body-content pg-blog">
-            <div markdown #postDiv [src]="'./assets/blog/blog.md'" (load)="onMarkdownLoad($event);"></div>
+            <div markdown #postDiv [src]="'./assets/blog/blog.md'" (load)="onMarkdownLoad();"></div>
         </section>
     </main>
 </app-base-page>
