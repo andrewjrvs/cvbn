@@ -13,7 +13,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   private listenObj: any;
 
-  @ViewChild('postDiv', {static: false})
+  @ViewChild('postDiv')
   private postDiv: MarkdownComponent;
 
   constructor(private markdownService: MarkdownService, private renderer: Renderer2, private router: Router) { }

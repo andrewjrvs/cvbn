@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer, OnDestroy, OnInit, HostListener} from '@angular/core';
+import { Directive, ElementRef, OnDestroy, OnInit, HostListener, Renderer2 } from '@angular/core';
 
 
 interface FSPoint {
@@ -71,7 +71,7 @@ export class HomeFlashShowDirective implements OnInit, OnDestroy {
     private elShell: any;
     private offset: FSPoint = {top: 0, left: 0};
 
-    constructor(private el: ElementRef, private render: Renderer) {}
+    constructor(private el: ElementRef, private render: Renderer2) {}
 
     @HostListener('window:mousemove', ['$event'])
     mission_document_mousemove(e?: any): void {
