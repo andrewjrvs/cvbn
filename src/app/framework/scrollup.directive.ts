@@ -1,6 +1,6 @@
 import { Directive, ElementRef, OnDestroy, Inject, HostBinding, HostListener, Renderer2 } from '@angular/core';
 import { ScrollupService } from './scrollup.service';
-import { WINDOWREF, WindowRef } from './WindowRef';
+import { WINDOWREF, WindowRef } from './windowRef';
 
 
 @Directive({

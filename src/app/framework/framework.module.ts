@@ -6,12 +6,12 @@ import { RouterModule } from '@angular/router';
 import { BasePageComponent } from './base-page/base-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { ScrollupDirective } from './scrollup.directive';
-import { WINDOWREF, WindowRef } from './WindowRef';
+import { WINDOWREF, WindowRef } from './windowRef';
 import { ScrollupService } from './scrollup.service';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule],
   declarations: [SiteLogoComponent, NavigationBarComponent, BasePageComponent, FooterComponent, ScrollupDirective],
   exports : [NavigationBarComponent, SiteLogoComponent, BasePageComponent],
   providers : [

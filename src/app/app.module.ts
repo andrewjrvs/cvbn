@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { SkillBarComponent } from './skill-bar/skill-bar.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { BlurbComponent } from './blurb/blurb.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BlurbComponent } from './blurb/blurb.component';
     HttpClientModule,
     FrameworkModule,
     AppRoutingModule,
+    FontAwesomeModule,
   ],
   bootstrap: [AppComponent]
 })

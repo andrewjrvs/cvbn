@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { WINDOWREF, WindowRef } from './WindowRef';
+import { WINDOWREF, WindowRef } from './windowRef';
 
 @Injectable()
 export class ScrollupService {

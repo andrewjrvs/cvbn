@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { WINDOWREF, WindowRef } from './WindowRef';
+import { WINDOWREF, WindowRef } from './windowRef';
 
 import { ScrollupService } from './scrollup.service';
 
