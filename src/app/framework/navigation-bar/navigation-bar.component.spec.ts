@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { NavigationBarComponent } from './navigation-bar.component';
 
@@ -7,7 +7,7 @@ describe('NavigationBarComponent', () => {
   let fixture: ComponentFixture<NavigationBarComponent>;
   const mockRouter = { navigate: jasmine.createSpy('navigate') };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NavigationBarComponent ],
       providers: [{ provide: Router, useValue: mockRouter }]

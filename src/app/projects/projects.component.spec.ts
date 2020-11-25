@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FrameworkModule } from '../framework/framework.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonalInformationService } from '../personal-information.service';
@@ -10,7 +10,7 @@ describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
   let fixture: ComponentFixture<ProjectsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [FrameworkModule, NoopAnimationsModule],
       declarations: [ ProjectsComponent, BlurbComponent ]

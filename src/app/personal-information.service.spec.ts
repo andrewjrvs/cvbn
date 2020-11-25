@@ -1,4 +1,4 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import 'rxjs/add/operator/filter';
 
@@ -47,7 +47,7 @@ describe('PersonalInformationService', () => {
     }));
 
     it('should return a list of skills'
-      , async(inject([PersonalInformationService, HttpTestingController],
+      , waitForAsync(inject([PersonalInformationService, HttpTestingController],
           (service: PersonalInformationService, backend: HttpTestingController) => {
       service.skills$
         .subscribe(
@@ -64,7 +64,7 @@ describe('PersonalInformationService', () => {
 
 
     it('should return an error when it occurs'
-      , async(inject([PersonalInformationService, HttpTestingController],
+      , waitForAsync(inject([PersonalInformationService, HttpTestingController],
           (service: PersonalInformationService, backend: HttpTestingController) => {
       service.skills$
         .subscribe(
@@ -107,7 +107,7 @@ describe('PersonalInformationService', () => {
     // }));
 
     it('should return a list of skills'
-      , async(inject([PersonalInformationService, HttpTestingController],
+      , waitForAsync(inject([PersonalInformationService, HttpTestingController],
           (service: PersonalInformationService, backend: HttpTestingController) => {
       service.projects$
         .subscribe(
