@@ -27,7 +27,7 @@ export class MockPersonalInformationService {
 
 if (typeof Worker !== 'undefined') {
   // Create a new
-  const worker = new Worker('./person.worker', { type: 'module' });
+  const worker = new Worker(new URL('./person.worker', import.meta.url), { type: 'module' });
   worker.onmessage = ({ data }) => {
     console.log(`page got message: ${data}`);
   };
