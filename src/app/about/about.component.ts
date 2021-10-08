@@ -4,6 +4,8 @@ import { Skill } from '../skill';
 import { slideInDownAnimation } from '../animations';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-about',
@@ -15,6 +17,8 @@ import { share } from 'rxjs/operators';
 export class AboutComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
+
+  public faHeart = faHeart;
 
   public skills$: Observable<Skill[]>;
 

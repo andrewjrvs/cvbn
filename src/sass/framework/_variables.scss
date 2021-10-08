@@ -3,6 +3,8 @@ $blip1-color: #35d440;
 $blip2-color: #1086ff;
 $blip3-color: #e72944;
 
+@use "sass:math";
+
 
 $page-bg-color: transparent;
 
@@ -136,8 +138,8 @@ $gray-light: #777;
 @mixin container-fixed($gutter: $grid-gutter-width) {
     margin-right: auto;
     margin-left: auto;
-    padding-left: ($gutter / 2);
-    padding-right: ($gutter / 2);
+    padding-left: math.div($gutter, 2);
+    padding-right: math.div($gutter,  2);
     @include clearfix;
 }
 
