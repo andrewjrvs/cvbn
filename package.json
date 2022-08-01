@@ -22,6 +22,9 @@
     "@angular/platform-browser": "13.3.8",
     "@angular/platform-browser-dynamic": "13.3.8",
     "@angular/router": "13.3.8",
+    "@capacitor/android": "^4.0.1",
+    "@capacitor/angular": "^2.0.3",
+    "@capacitor/core": "latest",
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -51,6 +54,7 @@
     "protractor": "~7.0.0",
     "ts-node": "^6.0.1",
     "tslint": "~6.1.0",
-    "typescript": "4.6.4"
+    "typescript": "4.6.4",
+    "@capacitor/cli": "latest"
   }
 }
