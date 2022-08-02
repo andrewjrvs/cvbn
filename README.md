@@ -26,3 +26,28 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+preping local
+```
+sudo chmod 777 -R /usr/local/android-sdk
+```
+
+signing
+```
+
+keytool -genkey -alias android-cvbn \
+    -keyalg RSA -keystore keystore.jks \
+    -dname "CN=Andrew Jarvis, OU=cvbn, O=us, L=, S=, C=" \
+    -storepass password -keypass password -validity 9125
+
+keytool -importcert -file ./deployment_cert.der \
+   -keystore android-cvbn.jks -storepass password \
+   -alias andriod-cvbn -keypass password
+
+$JAVA_HOME/bin/jarsigner -verbose -sigalg SHA1withRSA \
+   -digestalg SHA1 \
+   -keystore /workspaces/cvbn/android-cvbn.jks \
+   -storepass password -keypass password \
+   -signedjar cvbn-website.aab \
+   /workspaces/cvbn/android/app/build/outputs/bundle/release/app-release.aab android-cvbn
+```

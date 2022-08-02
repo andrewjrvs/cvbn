@@ -35,7 +35,8 @@ RUN mkdir "$ANDROID_HOME" .android \
     && mv $ANDROID_HOME/cmdline-tools $ANDROID_HOME/latest \
     && mkdir $ANDROID_HOME/cmdline-tools \
     && cp -R $ANDROID_HOME/latest $ANDROID_HOME/cmdline-tools/latest \
-    && yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+    && yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses \
+    && chmod 777 -R /usr/local/android-sdk
 
 RUN $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --update
 RUN $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
